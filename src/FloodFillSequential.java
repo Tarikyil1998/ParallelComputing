@@ -1,3 +1,7 @@
+import java.awt.*;
+import java.util.Queue;
+import java.util.LinkedList;
+
 class FloodFillSequential {
     // A recursive function to replace previous color 'prevC' at '(x, y)'
     // and all surrounding pixels of (x, y) with new color 'newC' and
@@ -23,7 +27,39 @@ class FloodFillSequential {
     // calls floodFillUtil()
     static void floodFill(int[][] screen, int x, int y, int newC) {
         int prevC = screen[x][y];
-        floodFillUtil(screen, x, y, prevC, newC, screen.length);
+        fillArea(screen,x,y,prevC,newC);
+    //floodFillUtil(screen, x, y, prevC, newC, screen.length);
+    }
+
+
+    public static void fillArea (int[][]screen, int x, int y, int original, int fill){
+        if (x != 0)
+            x--;
+        if (y!= 0)
+            y--;
+
+        Queue<Point> queue = new LinkedList<Point>();
+        if (screen[y][x] != original){
+            return;
+        }
+        queue.add(new Point(x, y));
+
+        while (!queue.isEmpty()){
+            Point p = queue.remove();
+            if(p.x < 0 || p.x >= screen.length || p.y < 0 || p.y >= screen.length){
+                continue;
+            }
+            if (screen[p.y][p.x] == original){
+                screen[p.y][p.x] = fill;
+                queue.add(new Point(p.x-1, p.y));
+                queue.add(new Point(p.x+1, p.y));
+                queue.add(new Point(p.x, p.y-1));
+                queue.add(new Point(p.x, p.y+1));
+            }
+
+        }
+
+        return;
     }
 }
 

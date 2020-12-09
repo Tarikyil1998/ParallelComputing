@@ -3,16 +3,17 @@ import java.util.Collections;
 public class Main {
     public static void main(String [ ] args)
     {
-        int[][] N = GenerateInput(95);
-        int[][] N2 = GenerateInput(N.length * 2);
-        int[][] N4 = GenerateInput(N.length * 4) ;
-        int[][] N8 = GenerateInput(N.length * 8) ;
+        int[][] N = GenerateInput(4000);
+//        int[][] N2 = GenerateInput(N.length * 2);
+//        int[][] N4 = GenerateInput(N.length * 4) ;
+//        int[][] N8 = GenerateInput(N.length * 8) ;
 
         int x = 4, y = 4, newC = 3;
         long starttime = System.nanoTime();
-        FloodFillSequential.floodFill(N, x, y, newC);
+        FloodFillSequential.fillArea(N, x, y,0, newC);
         long elapsetime = System.nanoTime();
         System.out.println("Elapse time : " +(elapsetime-starttime));
+        printArray(N);
 
     }
 
