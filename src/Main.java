@@ -2,12 +2,12 @@ import java.util.Collections;
 
 public class Main {
     public static void main(String [ ] args) throws InterruptedException {
-        int[][] N = GenerateInput(4000);
-//        int[][] N2 = GenerateInput(N.length * 2);
-//        int[][] N4 = GenerateInput(N.length * 4) ;
-//        int[][] N8 = GenerateInput(N.length * 8) ;
+//        int[][] N = GenerateInput(4000);
+        int[][] N = GenerateInput(8000);
+//        int[][] N = GenerateInput(16000) ;
+//        int[][] N = GenerateInput(32000) ;
 
-        int[][] NSecond = GenerateInput(4000);
+        int[][] NSecond = GenerateInput(N.length);
 
         int x = 4, y = 4, newC = 3;
         long starttime = System.nanoTime();
@@ -19,11 +19,9 @@ public class Main {
         long starttime2 = System.nanoTime();
         FloodFillThreading floodFillThreading = new FloodFillThreading();
         floodFillThreading.screen = NSecond;
-        floodFillThreading.threadCount = 8;
-        floodFillThreading.ThreadStart();
+        floodFillThreading.threadCount = 5;
+        printArray(floodFillThreading.ThreadStart());
         long elapsetime2 = System.nanoTime();
-
-        System.out.println("BRO");
 
         System.out.println("Elapse time : " +(elapsetime2-starttime2));
         //printArray(floodFillThreading.ThreadStart());

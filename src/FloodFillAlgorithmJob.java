@@ -47,7 +47,7 @@ public class FloodFillAlgorithmJob  implements Runnable{
 
         while (!queue.isEmpty()){
             Point p = queue.remove();
-            if(p.x < startPosition -1 || p.x >= intervalSize * startPosition || p.y < startPosition -1 || p.y >= intervalSize * (startPosition + 1)){
+            if(p.x < 0 || p.x >= screen.length || p.y < 0 || p.y >= screen.length){
                 continue;
             }
                 if (screen[p.y][p.x] == original){
