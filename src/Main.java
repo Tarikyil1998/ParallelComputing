@@ -1,30 +1,9 @@
+import java.io.FileNotFoundException;
 import java.util.Collections;
 
 public class Main {
-    public static void main(String [ ] args) throws InterruptedException {
-//        int[][] N = GenerateInput(4000);
-        int[][] N = GenerateInput(8000);
-//        int[][] N = GenerateInput(16000) ;
-//        int[][] N = GenerateInput(32000) ;
-
-        int[][] NSecond = GenerateInput(N.length);
-
-        int x = 4, y = 4, newC = 3;
-        long starttime = System.nanoTime();
-        FloodFillSequential.fillArea(N, x, y,0, newC);
-        long elapsetime = System.nanoTime();
-        System.out.println("Elapse time : " +(elapsetime-starttime));
-        //printArray(N);
-
-        long starttime2 = System.nanoTime();
-        FloodFillThreading floodFillThreading = new FloodFillThreading();
-        floodFillThreading.screen = NSecond;
-        floodFillThreading.threadCount = 5;
-        printArray(floodFillThreading.ThreadStart());
-        long elapsetime2 = System.nanoTime();
-
-        System.out.println("Elapse time : " +(elapsetime2-starttime2));
-        //printArray(floodFillThreading.ThreadStart());
+    public static void main(String [ ] args) throws FileNotFoundException {
+        Controller controller = new Controller();
     }
 
     private static int[][] GenerateInput(int size) {
@@ -66,5 +45,31 @@ public class Main {
         for(int[] row : input) {
             printRow(row);
         }
+    }
+
+    private static void floodfill()  throws InterruptedException {
+//        int[][] N = GenerateInput(4000);
+        int[][] N = GenerateInput(8000);
+//        int[][] N = GenerateInput(16000) ;
+//        int[][] N = GenerateInput(32000) ;
+
+        int[][] NSecond = GenerateInput(N.length);
+
+        int x = 4, y = 4, newC = 3;
+        long starttime = System.nanoTime();
+        FloodFillSequential.fillArea(N, x, y,0, newC);
+        long elapsetime = System.nanoTime();
+        System.out.println("Elapse time : " +(elapsetime-starttime));
+        //printArray(N);
+
+        long starttime2 = System.nanoTime();
+        FloodFillThreading floodFillThreading = new FloodFillThreading();
+        floodFillThreading.screen = NSecond;
+        floodFillThreading.threadCount = 5;
+        printArray(floodFillThreading.ThreadStart());
+        long elapsetime2 = System.nanoTime();
+
+        System.out.println("Elapse time : " +(elapsetime2-starttime2));
+        //printArray(floodFillThreading.ThreadStart());
     }
 }
