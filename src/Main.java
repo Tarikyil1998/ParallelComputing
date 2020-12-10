@@ -1,20 +1,32 @@
 import java.util.Collections;
 
 public class Main {
-    public static void main(String [ ] args)
-    {
+    public static void main(String [ ] args) throws InterruptedException {
         int[][] N = GenerateInput(4000);
 //        int[][] N2 = GenerateInput(N.length * 2);
 //        int[][] N4 = GenerateInput(N.length * 4) ;
 //        int[][] N8 = GenerateInput(N.length * 8) ;
+
+        int[][] NSecond = GenerateInput(4000);
 
         int x = 4, y = 4, newC = 3;
         long starttime = System.nanoTime();
         FloodFillSequential.fillArea(N, x, y,0, newC);
         long elapsetime = System.nanoTime();
         System.out.println("Elapse time : " +(elapsetime-starttime));
-        printArray(N);
+        //printArray(N);
 
+        long starttime2 = System.nanoTime();
+        FloodFillThreading floodFillThreading = new FloodFillThreading();
+        floodFillThreading.screen = NSecond;
+        floodFillThreading.threadCount = 8;
+        floodFillThreading.ThreadStart();
+        long elapsetime2 = System.nanoTime();
+
+        System.out.println("BRO");
+
+        System.out.println("Elapse time : " +(elapsetime2-starttime2));
+        //printArray(floodFillThreading.ThreadStart());
     }
 
     private static int[][] GenerateInput(int size) {
