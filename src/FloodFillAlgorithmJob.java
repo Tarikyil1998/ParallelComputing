@@ -21,16 +21,7 @@ public class FloodFillAlgorithmJob  implements Runnable{
 
     @Override
     public void run() {
-        System.out.println(intervalSize * startPosition + "---" + intervalSize * (startPosition + 1));
         fillArea(screen, intervalSize * startPosition, intervalSize * startPosition, 0, 3, startPosition);
-    }
-
-    public void start () {
-        System.out.println("Starting " +  threadName );
-        if (thread == null) {
-            thread = new Thread (this, threadName);
-            thread.start();
-        }
     }
 
     public void fillArea (int[][]screen, int x, int y, int original, int fill, int startPosition){

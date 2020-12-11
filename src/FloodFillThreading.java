@@ -10,19 +10,18 @@ public class FloodFillThreading {
     int[][] screen;
 
     public int[][] ThreadStart () throws InterruptedException {
+        long starttime2 = System.nanoTime();
         int intervals = screen.length/threadCount;
 
         ExecutorService es = Executors.newCachedThreadPool();
         for(int i = 0; i < threadCount; i++){
-            //int[] array = Arrays.copyOfRange(screen[i],intervals*i, intervals*(i+1));
-
-            //FloodFillAlgorithmJob job = new FloodFillAlgorithmJob("Thread " + i, screen, intervals, i);
             es.execute(new FloodFillAlgorithmJob("Thread " + i, screen, intervals, i));
-            //job.start();
         }
         es.shutdown();
         es.awaitTermination(1, TimeUnit.MINUTES);
+        long elapsetime2 = System.nanoTime();
 
+        System.out.println("Elapse time threading approach : " +(elapsetime2-starttime2));
         return screen;
     }
 
