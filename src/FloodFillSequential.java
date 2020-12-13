@@ -3,7 +3,7 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 class FloodFillSequential {
-    // A recursive function to replace previous color 'prevC' at '(x, y)'
+    // A Qeueue function to replace previous color 'prevC' at '(x, y)'
     // and all surrounding pixels of (x, y) with new color 'newC' and
     public static void fillArea (int[][]screen, int x, int y, int original, int fill){
         long starttime = System.nanoTime();

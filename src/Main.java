@@ -3,18 +3,29 @@ import java.util.Collections;
 
 public class Main {
     public static void main(String [ ] args) throws InterruptedException {
-//       int[] amountOfThreads = new int[]{1, 2, 4, 8, 16, 32, 64, 128, 256,512};
-//       int[] inputArray = new int[]{1000,2000,3000,4000,5000,6000,7000,8000,9000,10000};
-//        for(int j = 0;j < amountOfThreads.length; j++) {
-//            for (int i = 0; i < amountOfThreads.length; i++) {
-//                floodfill((inputArray[i]), (amountOfThreads[j]));
-//            }
-//        }
-
-    }floodfill(10000,512);
-
+       int[] amountOfThreads = new int[]{1, 2, 4, 8, 16, 32, 64, 128, 256,512};
+       int[] inputArray = new int[]{1000,2000,3000,4000,5000,6000,7000,8000,9000,10000};
+        for(int j = 0;j < amountOfThreads.length; j++) {
+            for (int i = 0; i < amountOfThreads.length; i++) {
+                floodfill((inputArray[i]), (amountOfThreads[j]));
+            }
+        }
+    }
 
 
+    // Return false if the array contains a 0 because this means the flood fill has not worked correct.
+    private boolean validateOutput(int[][] arr){
+        for(int x = 0; x < arr.length; x++) {
+            for(int y = 0; y < arr.length; y++) {
+                if(arr[x][y] == 0){
+                    return false;
+                }
+            }
+        }
+        return true;
+
+    }
+    //GenerateInput to have a consistent square input to achieve the N^2 complexity
     private static int[][] GenerateInput(int size) {
 
         //using a single size int to make sure we always get a square input
@@ -61,7 +72,7 @@ public class Main {
         int[][] NSecond = GenerateInput(size);
         System.out.println("N = "+size + " - " + "Thread = " + threadcount);
         int x = 4, y = 4, newC = 3;
-        FloodFillSequential.fillArea(N, x, y,0, newC);
+//        FloodFillSequential.fillArea(N, x, y,0, newC);
         FloodFillThreading floodFillThreading = new FloodFillThreading();
         floodFillThreading.screen = NSecond;
         floodFillThreading.threadCount = threadcount;
