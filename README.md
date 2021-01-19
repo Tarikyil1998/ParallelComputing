@@ -16,5 +16,5 @@ Parallel Computing with Stijn Klopper & Tarik Yildirim
 ![img_1.png](img_1.png)!
 
 ### Additional
-5. To run the RMI system first run the [Server.java](src/Server.java) file and after the console prints out the message saying ``Server is started!`` 
+5. To run the RMI system first run the [Server.java](src/Server.java) file and wait for the console to print out the message: ``Server is started!`` 
 6. After the server is running please run the [Client.java](src/Client.java) class using the same method
