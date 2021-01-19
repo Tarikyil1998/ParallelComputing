@@ -1,13 +1,13 @@
 # ParallelComputing
-Parlalleling with Stijn Klopper & Tarik Yildirim
+Parallel Computing with Stijn Klopper & Tarik Yildirim
 
 
-#How to install 
+# How to install 
 1. Copy the GIT url shown above. 
 2. Create a folder to place the project in
 3. Open up CMD/Bash/Command line interface and paste the following ``git clone *_URL_*``
 
-#How to run 
+# How to run 
 1. To run our project Java should be installed on the operating system. We recommend Java 8
    Since the project is made in Java 8.
 2. Open up the project in a Java Editor/Compiler we recommend Intellijea from Jetbrains.
