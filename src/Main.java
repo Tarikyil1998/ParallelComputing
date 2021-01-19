@@ -26,7 +26,7 @@ public class Main {
 
     }
     //GenerateInput to have a consistent square input to achieve the N^2 complexity
-    private static int[][] GenerateInput(int size) {
+    public static int[][] GenerateInput(int size) {
 
         //using a single size int to make sure we always get a square input
         int[][] inputValue = new int[size][size];
@@ -61,7 +61,7 @@ public class Main {
         System.out.println();
     }
     //Function to print the input of a 2d int array
-    private static void printArray(int[][] input){
+    public static void printArray(int[][] input){
         for(int[] row : input) {
             printRow(row);
         }
@@ -72,7 +72,7 @@ public class Main {
         int[][] NSecond = GenerateInput(size);
         System.out.println("N = "+size + " - " + "Thread = " + threadcount);
         int x = 4, y = 4, newC = 3;
-//        FloodFillSequential.fillArea(N, x, y,0, newC);
+        FloodFillSequential.fillArea(N, x, y,0, newC);
         FloodFillThreading floodFillThreading = new FloodFillThreading();
         floodFillThreading.screen = NSecond;
         floodFillThreading.threadCount = threadcount;
